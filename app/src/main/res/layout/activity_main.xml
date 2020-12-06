@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main_Activity">
+
+    <Button
+        android:id="@+id/btnconnect"
+        android:layout_width="174dp"
+        android:layout_height="61dp"
+        android:text="Music Connect"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="406dp"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/btnstopconnect"
+        android:layout_width="174dp"
+        android:layout_height="61dp"
+        android:text="Stop Music Connect"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="498dp"
+        android:onClick="onClick"/>
+    <Button
+        android:id="@+id/btnmcontroller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Music Controller"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="667dp"
+        android:onClick="onClick"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="91dp"/>
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="375dp"
+        android:layout_height="58dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Bluetooh Media Car Control"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="286dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
