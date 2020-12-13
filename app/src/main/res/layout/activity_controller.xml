@@ -20,44 +20,20 @@
     <ImageView
         android:id="@+id/btnplay_pause"
         android:layout_width="match_parent"
-        android:layout_height="239dp"
-        app:srcCompat="@android:drawable/ic_media_pause"
-        tools:srcCompat="@android:drawable/ic_media_play"
+        android:layout_height="match_parent"
+
         android:onClick="onClick"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:id="@+id/btnprevious"
-            android:layout_width="192dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:foregroundGravity="center"
-            android:onClick="onClick"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+    <!--
+    app:srcCompat="@android:drawable/ic_media_pause"
+    tools:srcCompat="@android:drawable/ic_media_play"/>-->
 
 
-        <ImageView
-            android:id="@+id/btnnext"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@android:drawable/ic_media_next"
-            android:layout_toEndOf="@+id/btnprevious"
-            android:onClick="onClick"/>
 
-
-    </RelativeLayout>
-
-
-<!--    <SeekBar-->
-<!--        android:id="@+id/song_prog"-->
-<!--        android:layout_width="399dp"-->
-<!--        android:layout_height="57dp"-->
-<!--        tools:layout_editor_absoluteX="6dp"-->
-<!--        tools:layout_editor_absoluteY="29dp" />-->
+    <!--    <SeekBar-->
+    <!--        android:id="@+id/song_prog"-->
+    <!--        android:layout_width="399dp"-->
+    <!--        android:layout_height="57dp"-->
+    <!--        tools:layout_editor_absoluteX="6dp"-->
+    <!--        tools:layout_editor_absoluteY="29dp" />-->
 
 </LinearLayout>

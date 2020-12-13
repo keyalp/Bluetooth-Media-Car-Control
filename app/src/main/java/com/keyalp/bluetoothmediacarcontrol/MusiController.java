@@ -4,25 +4,26 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.provider.MediaStore;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MusiController extends AppCompatActivity {
 
-    private AudioManager myaud;
+    private AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controller);
 
-        myaud = (AudioManager)getSystemService(Context.AUDIO_SERVICE);          //Objecte utilitzat per controlar la música.
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);   //Flag que Evita que s'apagui la pantalla.
+        audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);   //This Object is utilized for manage the music controls
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);   //Flag used to keep the screen on.
+
+        setScreenBrightness(0); //Set screen brightness to the minimum and save battery
+
     }
 
     public void onClick(View view){
@@ -30,38 +31,43 @@ public class MusiController extends AppCompatActivity {
             case R.id.btnplay_pause:
                 playPause();
                 break;
-            case R.id.btnprevious:
+            /*case R.id.btnprevious:
                 previousFunc();
                 break;
             case R.id.btnnext:
                 nextFunc();
-                break;
+                break;*/
         }
     }
 
     private void playPause() {
         long eventtime = SystemClock.uptimeMillis();
         KeyEvent downEvent = new KeyEvent(eventtime, eventtime, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, 0);
-        myaud.dispatchMediaKeyEvent(downEvent);
+        audioManager.dispatchMediaKeyEvent(downEvent);
         KeyEvent upEvent = new KeyEvent(eventtime, eventtime, KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, 0);
-        myaud.dispatchMediaKeyEvent(upEvent);
+        audioManager.dispatchMediaKeyEvent(upEvent);
 
     }
-
+/*
     private void previousFunc(){
         long eventtime = SystemClock.uptimeMillis();
         KeyEvent downEvent = new KeyEvent(eventtime, eventtime, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_PREVIOUS, 0);
-        myaud.dispatchMediaKeyEvent(downEvent);
+        audioManager.dispatchMediaKeyEvent(downEvent);
     }
 
     private void nextFunc(){
         long eventtime = SystemClock.uptimeMillis();
         KeyEvent downEvent = new KeyEvent(eventtime, eventtime, KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT, 0);
-        myaud.dispatchMediaKeyEvent(downEvent);
+        audioManager.dispatchMediaKeyEvent(downEvent);
 
     }
-
-
+*/
+    //Method used to set a custom screen brightness (0 min / 1 max)
+    public void setScreenBrightness(float brightness){
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.screenBrightness = brightness;
+        getWindow().setAttributes(lp);
+    }
 
     @Override
     public void onBackPressed() {
