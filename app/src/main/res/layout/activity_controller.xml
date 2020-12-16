@@ -5,35 +5,20 @@
     android:id="@+id/music_controller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
+    android:paddingBottom="@dimen/fab_margin"
+    android:paddingLeft="@dimen/fab_margin"
+    android:paddingRight="@dimen/fab_margin"
+    android:paddingTop="@dimen/fab_margin"
     android:orientation="vertical"
     android:background="@android:color/background_dark"
-    android:weightSum="1"
     tools:ignore="ExtraText"
     tools:context=".MusiController">
-
 
 
     <ImageView
         android:id="@+id/btnplay_pause"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:onClick="onClick"/>
-    <!--
-    app:srcCompat="@android:drawable/ic_media_pause"
-    tools:srcCompat="@android:drawable/ic_media_play"/>-->
-
-
-
-    <!--    <SeekBar-->
-    <!--        android:id="@+id/song_prog"-->
-    <!--        android:layout_width="399dp"-->
-    <!--        android:layout_height="57dp"-->
-    <!--        tools:layout_editor_absoluteX="6dp"-->
-    <!--        tools:layout_editor_absoluteY="29dp" />-->
 
 </LinearLayout>

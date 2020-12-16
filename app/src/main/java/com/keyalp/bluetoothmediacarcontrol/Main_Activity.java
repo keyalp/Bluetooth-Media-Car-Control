@@ -4,12 +4,10 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothHeadset;
 import android.content.Context;
 import android.content.Intent;
-import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,15 +17,21 @@ import java.io.IOException;
 
 public class Main_Activity extends AppCompatActivity {
 
-    BluetoothHeadset bluetoothHeadset;
+    //private BluetoothHeadset bluetoothHeadset;
     // Get the default adapter
-    BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    TextView consola;
-    @Override
+    private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    //private TextView consola;
+    //private Button btn_connect;
 
+    private int REQUEST_ENABLE_BT = 1;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        checkBluetoothConnection();
+
         //consola = (TextView) findViewById((R.id.consola));
 
     }
@@ -37,19 +41,20 @@ public class Main_Activity extends AppCompatActivity {
         AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 
         switch (view.getId()){
-            case R.id.btnconnect:
-                if(openConnection(audioManager))
-                    popUpText("Connection Already ON!");
-                else
-                    popUpText("Opening Connection");
+            case R.id.btnConnect:
+                if(checkBluetoothConnection())
+                    if(openConnection(audioManager))
+                        popUpText("Connection Already ON!");
+                    else
+                        popUpText("Opening Connection");
                 break;
-            case R.id.btnstopconnect:
+            case R.id.btnDisconnect:
                 if(closeConnection(audioManager))
                     popUpText("Connection Already OFF!");
                 else
                     popUpText("Closing Connection");
                 break;
-            case R.id.btnmcontroller:
+            case R.id.btnMController:
                 startActivity(mIntent);
                 break;
         }
@@ -83,6 +88,16 @@ public class Main_Activity extends AppCompatActivity {
     //Method that shows a floating message to the user
     private void popUpText(String text){
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    //This method shows a pop up indicating to the user if wants to activate the bluetooth module
+    private boolean checkBluetoothConnection(){
+        if (!bluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            return false;
+        }else
+            return true;
     }
 
 }

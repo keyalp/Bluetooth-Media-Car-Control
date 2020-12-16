@@ -69,8 +69,8 @@ public class MusiController extends AppCompatActivity {
         getWindow().setAttributes(lp);
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         finish();
-    }
+    }*/
 }
