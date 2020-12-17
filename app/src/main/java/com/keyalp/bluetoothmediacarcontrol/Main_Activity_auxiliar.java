@@ -1,10 +1,8 @@
 package com.keyalp.bluetoothmediacarcontrol;
 
 import android.bluetooth.BluetoothAdapter;
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
@@ -16,11 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 
 
-public class Main_Activity extends AppCompatActivity {
+public class Main_Activity_auxiliar extends AppCompatActivity {
 
     // Get the default adapter
     private BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    private TextView status_text;
     private int REQUEST_ENABLE_BT = 1;
 
     @Override
@@ -28,7 +25,6 @@ public class Main_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkBluetoothConnection();
-        status_text = (TextView) findViewById((R.id.status_text));
     }
 
     public void onClick(View view) throws IOException {
@@ -55,39 +51,30 @@ public class Main_Activity extends AppCompatActivity {
         }
     }
 
-    //Method that opens the SCO bluetooth connection
-    // return false if connection already on
-    // return true if connection is established
+
+    //Method that opens the bluetooth connection
     private boolean openConnection(AudioManager audioManager){
         //Check if the connection it is already active
-        if(!audioManager.isBluetoothScoOn()) {
-            //Start Bluetooth SCO
-            audioManager.startBluetoothSco();       //Start SCO environment
-            audioManager.setBluetoothScoOn(true);   //Set SCO flag to true
-        //Check if the connection it's really established
-        }else if(audioManager.isBluetoothScoOn()){
-            setStatus(true);
+        if(audioManager.isBluetoothScoOn())
             return true;
-        }
+        //Start Bluetooth SCO
+        audioManager.startBluetoothSco();       //Start SCO environment
+        audioManager.setBluetoothScoOn(true);   //Set SCO flag to true
         return false;
     }
 
-    //Method that closes the SCO bluetooth connection
-    // returns true if connection is already closed
-    // returns false if connection is closed successfully
+    //Method that closes the bluetooth connection
     private boolean closeConnection(AudioManager audioManager){
-        if(audioManager.isBluetoothScoOn()) {
+        //Check if the connection is NOT active.
+        if(!audioManager.isBluetoothScoOn()) {
+            return true;
+        }else {
             //Stop Bluetooth SCO
             audioManager.setBluetoothScoOn(false);  //Set SCO flag to false
             audioManager.stopBluetoothSco();        //Stop SCO environment
-        // Check if the connection it's successfully closed
-        }else if (!audioManager.isBluetoothScoOn()) {
-            setStatus(false);
             return false;
         }
-        return true;
     }
-
 
     //Method that shows a floating message to the user
     private void popUpText(String text){
@@ -102,16 +89,6 @@ public class Main_Activity extends AppCompatActivity {
             return false;
         }else
             return true;
-    }
-
-    void setStatus(Boolean status){
-        if (status) {
-            status_text.setTextColor(Color.GREEN);
-            status_text.setText("Status: CONNECTED");
-        }else {
-            status_text.setTextColor(Color.RED);
-            status_text.setText("Status: DISCONNECTED");
-        }
     }
 
 

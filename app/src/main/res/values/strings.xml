@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bluetooth Media Car Control</string>
+    <string name="app_name">BT Media Drive</string>
     <!-- Strings used for fragments for navigation -->
     <string name="btnConnect">BT MUSIC CONNECT</string>
     <string name="btnDisconnect">BT MUSIC DISCONNECT</string>

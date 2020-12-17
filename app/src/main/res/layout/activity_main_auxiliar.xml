@@ -5,80 +5,95 @@
     android:id="@+id/music_controller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/fab_margin"
+    android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:orientation="vertical"
     android:background="@drawable/gradient_background"
+    android:weightSum="1"
+    tools:ignore="ExtraText"
     tools:context=".Main_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="236dp">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btconnectlogo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-
+        </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <Button
             android:id="@+id/btnConnect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:onClick="onClick"
             android:text="@string/btnConnect"
             app:layout_constraintBottom_toTopOf="@+id/btnDisconnect"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="@id/btnDisconnect"
-            app:layout_constraintRight_toRightOf="@+id/btnDisconnect" />
+            app:layout_constraintRight_toRightOf="@+id/btnDisconnect"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnDisconnect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="200dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="196dp"
             android:onClick="onClick"
             android:text="@string/btnDisconnect"
             app:layout_constraintBottom_toTopOf="@+id/btnMController"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+
         <TextView
-            android:id="@+id/status_text"
-            android:layout_width="match_parent"
+            android:id="@+id/consola"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="prova"
             app:layout_constraintBottom_toTopOf="@+id/btnMController"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDisconnect"
-            android:text="Status: DISCONNECTED"
-            android:textColor="@color/red"
-            android:textStyle="bold"
-            android:textScaleX="1.1"
-            android:scaleY="1.2"/>
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnMController"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="76dp"
             android:onClick="onClick"
             android:text="@string/btnMController"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btnDisconnect"
+            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="@+id/btnDisconnect" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--
+        <TextView
+            android:id="@+id/consola"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="12dp"
+            android:background="@color/cardview_light_background"
+            android:textColor="@color/cardview_dark_background"
+            android:text="Consola"/>
+    -->
+
 </LinearLayout>

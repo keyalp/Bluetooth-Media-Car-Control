@@ -25,7 +25,7 @@
         tools:layout_editor_absoluteX="-13dp">
 
         <ImageView
-            android:id="@+id/btnplay_pause"
+            android:id="@+id/btn_universal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="onClick"
